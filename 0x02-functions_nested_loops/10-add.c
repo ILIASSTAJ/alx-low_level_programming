@@ -1,5 +1,4 @@
 #include "main.h"
-#include "holberton.h"
 /**
  * add - a function that adds two integers and returns the result
  * @one: first number input
@@ -8,6 +7,5 @@
  */
 int add(int one, int two)
 {
-	return (one + two);
+        return (one + two);
 }
-

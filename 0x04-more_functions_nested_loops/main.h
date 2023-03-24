@@ -13,7 +13,8 @@ int _isdigit(int c);
 int mul(int a, int b);
 void print_diagonal(int n);
 void print_square(int size);
-angle(int size);
+void print_triangle(int size);
+
 
 
 

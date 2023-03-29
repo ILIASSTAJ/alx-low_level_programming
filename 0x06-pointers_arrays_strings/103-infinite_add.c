@@ -1,51 +1,46 @@
 #include "main.h"
-#include <stdio.h>
 /**
- * infinite_add - Adds two numbers
- * @n1: first input string
- * @n2: second input string
- * @r: pointer to buffer where result is stored
- * @size_r: requested size for the buffer
- * Return: pointer to buffer where result is stored
- */
-
+  * infinite_add - adds two numbers
+  * @n1: number1
+  * @n2: number2
+  * @r: result
+  * @size_r: size result
+  * Return: r addition
+**/
 char *infinite_add(char *n1, char *n2, char *r, int size_r)
 {
-	int i, j, n, len1, len2; /* i = iterator, n = carry over number */
+	int i = 0, j = 0, a, b, c, n, aux, dec = 0;
 
-	for (len1 = 0; n1[len1] != '\0'; len1++)
-		;
-	for (len2 = 0; n2[len2] != '\0'; len2++)
-		;
-	if (size_r >= len1 || size_r >= len2)
-		if (len1 >= len2)
-			i = j = len2 - 1;
-		else
-			i = j = len1 - 1;
+	while (n1[i] != '\0')
+	{
+	i++;
+	}
+	while (n2[j] != '\0')
+	{
+	j++;
+	}
+	for (n = 0; n < j || n < i; n++)
+	{
+	a = (i - n) > 0 ? (n1[i - n - 1] - '0') : 0;
+	b = (j - n) > 0 ? (n2[j - n - 1] - '0') : 0;
+	c = a + b + dec;
+	r[n] = (c % 10) + '0';
+	dec = c > 9 ? 1 : 0;
+	}
+	if (dec == 1)
+	{ r[n] = '1';
+	r[n + 1] = '\0'; }
 	else
-		i = j = size_r;	
-	n = 0;
-	/* if first number >= 10, set the value to 1 and increase the buffer by 1.*/
-	if ((n1[0] - '0') + (n2[0] - '0') >= 10)
+	{ r[n] = '\0';
+	n--; }
+	for (i = 0; i < n + 1; i++)
 	{
-		r[0] = 1 + '0';
-		j = 1;
-	}
-
-	while (i >= 0)
+	for (j = 0; j < (n - i); j++)
 	{
-		r[j] = (n1[i] - '0') + (n2[i] - '0') + n;
-		if (r[j] >= 10)
-		{
-			r[j] %= 10;
-			n = 1;
-		}
-		else
-			n = 0;
-		r[j] += '0';
-		i--;
-		j--;
+	aux = r[j + 1];
+	r[j + 1] = r[j];
+	r[j] = aux;
 	}
-	r[size_r] = '\0';
-	return (r);
+	}
+return (n < size_r - 1 ? r : 0);
 }

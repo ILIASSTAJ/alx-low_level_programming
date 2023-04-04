@@ -1,32 +1,21 @@
 #include "main.h"
 /**
-* print_chessboard - locates a substring
-* @a: array
-*/
+  * print_chessboard - Print the chessboard
+  * @a: array of pieces
+  *
+  * Return: Nothing.
+  */
 void print_chessboard(char (*a)[8])
 {
-int i, j;
-for (i = 0; i < 8; i++)
-{
-	for (j = 0; j < 8; j++)
+	int b, c;
+
+	for (b = 0; b < 8; b++)
 	{
-	_putchar(a[i][j]);
+		for (c = 0; c < 8; c++)
+		{
+			_putchar(a[b][c]);
+		}
+
+		_putchar('\n');
 	}
-	_putchar('\n');
-}
-}/**
-* print_chessboard - locates a substring
-* @a: array
-*/
-void print_chessboard(char (*a)[8])
-{
-int i, j;
-for (i = 0; i < 8; i++)
-{
-	for (j = 0; j < 8; j++)
-	{
-	_putchar(a[i][j]);
-	}
-	_putchar('\n');
-}
 }
